@@ -15,6 +15,7 @@ My current focus is on applying rigorous optimization and control-theoretic meth
 
 ## News
 
+- **Sep 2025:** Poster Presentation on "Control-Theoretic Design of Algorithms for Bilevel Optimization" at the Fall Johns Hopkins Data Science and AI (**DSAI**) Symposium.
 - **July 2025:** Our paper "Sequential QCQP for Bilevel Optimization With Line Search" is published at **IEEE Control Systems Letters** and will be presented at **CDC 2025**. 
 - **July 2025:** Our paper "Safe gradient flow for bilevel optimization" was presented at **ACC 2025**.  
 - **Mar 2025:** Gave a seminar on a control-theoretic perspective of bilevel optimization in the Jr. MINDS seminar series 
