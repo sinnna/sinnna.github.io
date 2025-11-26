@@ -12,6 +12,8 @@ My research experience includes adversarial robustness, reachability analysis, o
 
 My current focus is on applying rigorous optimization and control-theoretic methods to develop robust and efficient generative AI systems. I am particularly interested in flow matching, diffusion-based generative models, and the optimization challenges that arise in training and scaling large language models (LLMs).
 
+You can downlaod my CV [here](https://drive.google.com/file/d/1CibwuqBdjP-8aLqu69oGqtSC5pFElvjO/view?usp=sharing).
+
 
 ## News
 
