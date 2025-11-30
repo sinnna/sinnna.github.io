@@ -1,11 +1,17 @@
 {% include base_path %}
 
+{% comment %}
+  Determine teaser image
+{% endcomment %}
 {% if post.header.teaser %}
   {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
 {% else %}
   {% assign teaser = site.teaser %}
 {% endif %}
 
+{% comment %}
+  Determine the post title
+{% endcomment %}
 {% if post.id %}
   {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
 {% else %}
@@ -14,6 +20,10 @@
 
 <div class="{{ include.type | default: "list" }}__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+
+    {% comment %}
+      Display teaser image if grid view
+    {% endcomment %}
     {% if include.type == "grid" and teaser %}
       <div class="archive__item-teaser">
         <img src=
@@ -25,18 +35,57 @@
           alt="">
       </div>
     {% endif %}
+
+    {% comment %}
+      Display post title
+    {% endcomment %}
     <h2 class="archive__item-title" itemprop="headline">
-      {% if post.link %}
-        <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
+      {% assign nolink_flag = post.nolink | default: post.header.nolink %}
+      {% assign link_flag  = post.link   | default: post.header.link %}
+
+      {% if nolink_flag %}
+        <span class="no-link">{{ title }}</span>
       {% else %}
-        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
+        {% assign main_link = link_flag | default: base_path | append: post.url %}
+        <a href="{{ main_link }}" rel="permalink">{{ title }}</a>
+
+        {% if link_flag %}
+          <a href="{{ base_path }}{{ post.url }}" rel="permalink" class="permalink-icon">
+            <i class="fa fa-link"></i>
+          </a>
+        {% endif %}
       {% endif %}
     </h2>
+
+    {% comment %}
+      Optional read time
+    {% endcomment %}
     {% if post.read_time %}
       <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
     {% endif %}
-    {% if post.date %}<p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {{ post.date | date: '%B %d, %Y' }}</p>{% endif %}
-    {% if post.venue %}<p class="archive__item-excerpt" itemprop="description">{{post.type}}, {{ post.venue }},  {{post.location}} {% endif %}
-    {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>{% endif %}
+
+    {% comment %}
+      Optional post date
+    {% endcomment %}
+    {% if post.date %}
+      <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {{ post.date | date: '%B %d, %Y' }}</p>
+    {% endif %}
+
+    {% comment %}
+      Optional venue/location/type
+    {% endcomment %}
+    {% if post.venue %}
+      <p class="archive__item-excerpt" itemprop="description">
+        {{ post.type }}, {{ post.venue }}, {{ post.location }}
+      </p>
+    {% endif %}
+
+    {% comment %}
+      Optional excerpt
+    {% endcomment %}
+    {% if post.excerpt %}
+      <p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>
+    {% endif %}
+
   </article>
 </div>

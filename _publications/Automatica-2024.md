@@ -3,7 +3,8 @@ title: "Provable Bounds on the Hessian of Neural Networks: Derivative-Preserving
 collection: publications
 category: preprints
 permalink: /publication/Automatica-2024
-excerpt: 'This paper proposes a novel reachability analysis method tailored for neural networks with differentiable activations using first-order Taylor expansion.'
+excerpt: ''
+authors: '<b>S. Sharifi</b>, M. Fazlyab'
 date: 2024/01
 venue: 'Under Review'
 # slidesurl: 'https://academicpages.github.io/files/slides1.pdf'
